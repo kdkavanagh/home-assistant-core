@@ -11,13 +11,6 @@
             "cannot_connect": "Ba\u011flanma hatas\u0131"
         },
         "step": {
-            "auth": {
-                "data": {
-                    "password": "Parola",
-                    "username": "Kullan\u0131c\u0131 Ad\u0131"
-                },
-                "title": "Kimlik do\u011frulamay\u0131 yap\u0131land\u0131r"
-            },
             "configure": {
                 "data": {
                     "host": "Sunucu",
@@ -41,14 +34,6 @@
                 },
                 "title": "ONVIF cihaz\u0131n\u0131 se\u00e7in"
             },
-            "manual_input": {
-                "data": {
-                    "host": "Sunucu",
-                    "name": "Ad",
-                    "port": "Port"
-                },
-                "title": "ONVIF cihaz\u0131n\u0131 yap\u0131land\u0131r\u0131n"
-            },
             "user": {
                 "data": {
                     "auto": "Otomatik olarak ara"
@@ -63,7 +48,8 @@
             "onvif_devices": {
                 "data": {
                     "extra_arguments": "Ekstra FFMPEG arg\u00fcmanlar\u0131",
-                    "rtsp_transport": "RTSP ta\u015f\u0131ma mekanizmas\u0131"
+                    "rtsp_transport": "RTSP ta\u015f\u0131ma mekanizmas\u0131",
+                    "use_wallclock_as_timestamps": "Duvar saatini zaman damgas\u0131 olarak kullanma"
                 },
                 "title": "ONVIF Cihaz Se\u00e7enekleri"
             }

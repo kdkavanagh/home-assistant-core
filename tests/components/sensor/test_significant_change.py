@@ -5,8 +5,7 @@ from homeassistant.components.sensor import SensorDeviceClass, significant_chang
 from homeassistant.const import (
     ATTR_DEVICE_CLASS,
     ATTR_UNIT_OF_MEASUREMENT,
-    TEMP_CELSIUS,
-    TEMP_FAHRENHEIT,
+    UnitOfTemperature,
 )
 
 AQI_ATTRS = {
@@ -23,12 +22,12 @@ HUMIDITY_ATTRS = {
 
 TEMP_CELSIUS_ATTRS = {
     ATTR_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-    ATTR_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+    ATTR_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
 }
 
 TEMP_FREEDOM_ATTRS = {
     ATTR_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-    ATTR_UNIT_OF_MEASUREMENT: TEMP_FAHRENHEIT,
+    ATTR_UNIT_OF_MEASUREMENT: UnitOfTemperature.FAHRENHEIT,
 }
 
 
@@ -52,6 +51,8 @@ TEMP_FREEDOM_ATTRS = {
         ("12.1", "12.2", TEMP_CELSIUS_ATTRS, False),
         ("70", "71", TEMP_FREEDOM_ATTRS, True),
         ("70", "70.5", TEMP_FREEDOM_ATTRS, False),
+        ("fail", "70", TEMP_FREEDOM_ATTRS, True),
+        ("70", "fail", TEMP_FREEDOM_ATTRS, False),
     ],
 )
 async def test_significant_change_temperature(old_state, new_state, attrs, result):

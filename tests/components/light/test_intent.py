@@ -2,7 +2,7 @@
 from homeassistant.components import light
 from homeassistant.components.light import ATTR_SUPPORTED_COLOR_MODES, ColorMode, intent
 from homeassistant.const import ATTR_ENTITY_ID, SERVICE_TURN_ON
-from homeassistant.helpers.intent import IntentHandleError
+from homeassistant.helpers.intent import async_handle
 
 from tests.common import async_mock_service
 
@@ -16,10 +16,11 @@ async def test_intent_set_color(hass):
     calls = async_mock_service(hass, light.DOMAIN, light.SERVICE_TURN_ON)
     await intent.async_setup_intents(hass)
 
-    result = await hass.helpers.intent.async_handle(
+    result = await async_handle(
+        hass,
         "test",
         intent.INTENT_SET,
-        {"name": {"value": "Hello"}, "color": {"value": "blue"}},
+        {"name": {"value": "Hello 2"}, "color": {"value": "blue"}},
     )
     await hass.async_block_till_done()
 
@@ -39,16 +40,16 @@ async def test_intent_set_color_tests_feature(hass):
     calls = async_mock_service(hass, light.DOMAIN, light.SERVICE_TURN_ON)
     await intent.async_setup_intents(hass)
 
-    try:
-        await hass.helpers.intent.async_handle(
-            "test",
-            intent.INTENT_SET,
-            {"name": {"value": "Hello"}, "color": {"value": "blue"}},
-        )
-        assert False, "handling intent should have raised"
-    except IntentHandleError as err:
-        assert str(err) == "Entity hello does not support changing colors"
+    response = await async_handle(
+        hass,
+        "test",
+        intent.INTENT_SET,
+        {"name": {"value": "Hello"}, "color": {"value": "blue"}},
+    )
 
+    # Response should contain one failed target
+    assert len(response.success_results) == 0
+    assert len(response.failed_results) == 1
     assert len(calls) == 0
 
 
@@ -61,11 +62,12 @@ async def test_intent_set_color_and_brightness(hass):
     calls = async_mock_service(hass, light.DOMAIN, light.SERVICE_TURN_ON)
     await intent.async_setup_intents(hass)
 
-    result = await hass.helpers.intent.async_handle(
+    result = await async_handle(
+        hass,
         "test",
         intent.INTENT_SET,
         {
-            "name": {"value": "Hello"},
+            "name": {"value": "Hello 2"},
             "color": {"value": "blue"},
             "brightness": {"value": "20"},
         },

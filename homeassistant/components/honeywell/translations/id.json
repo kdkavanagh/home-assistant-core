@@ -1,6 +1,7 @@
 {
     "config": {
         "error": {
+            "cannot_connect": "Gagal terhubung",
             "invalid_auth": "Autentikasi tidak valid"
         },
         "step": {
@@ -9,8 +10,18 @@
                     "password": "Kata Sandi",
                     "username": "Nama Pengguna"
                 },
-                "description": "Masukkan kredensial yang digunakan untuk masuk ke mytotalconnectcomfort.com.",
-                "title": "Honeywell Total Connect Comfort (AS)"
+                "description": "Masukkan kredensial yang digunakan untuk masuk ke mytotalconnectcomfort.com."
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "away_cool_temperature": "Suhu dingin ketika jauh",
+                    "away_heat_temperature": "Suhu panas ketika jauh"
+                },
+                "description": "Opsi konfigurasi Honeywell tambahan. Suhu diatur dalam Fahrenheit."
             }
         }
     }

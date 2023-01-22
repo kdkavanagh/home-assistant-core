@@ -1,6 +1,8 @@
 """Config flow for Bosch Smart Home Controller integration."""
+from collections.abc import Mapping
 import logging
 from os import makedirs
+from typing import Any
 
 from boschshcpy import SHCRegisterClient, SHCSession
 from boschshcpy.exceptions import (
@@ -83,7 +85,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     host = None
     hostname = None
 
-    async def async_step_reauth(self, user_input=None):
+    async def async_step_reauth(self, entry_data: Mapping[str, Any]) -> FlowResult:
         """Perform reauth upon an API authentication error."""
         return await self.async_step_reauth_confirm()
 
@@ -196,7 +198,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self.host = discovery_info.host
 
         local_name = discovery_info.hostname[:-1]
-        node_name = local_name[: -len(".local")]
+        node_name = local_name.removesuffix(".local")
 
         await self.async_set_unique_id(self.info["unique_id"])
         self._abort_if_unique_id_configured({CONF_HOST: self.host})

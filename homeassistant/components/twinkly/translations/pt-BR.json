@@ -8,14 +8,12 @@
         },
         "step": {
             "discovery_confirm": {
-                "description": "Deseja configurar {name} - {model} ( {host} )?"
+                "description": "Deseja configurar {name} - {model} ({host})?"
             },
             "user": {
                 "data": {
                     "host": "Nome do host"
-                },
-                "description": "Configure sua fita de led Twinkly",
-                "title": "Twinkly"
+                }
             }
         }
     }

@@ -1,12 +1,11 @@
 {
     "config": {
         "abort": {
-            "single_instance_allowed": "Already configured. Only a single configuration possible.",
-            "wrong_server_id": "Server ID is not valid"
+            "single_instance_allowed": "Already configured. Only a single configuration possible."
         },
         "step": {
             "user": {
-                "description": "Do you want to start set up?"
+                "description": "Do you want to start setup?"
             }
         }
     },
@@ -14,8 +13,6 @@
         "step": {
             "init": {
                 "data": {
-                    "manual": "Disable auto update",
-                    "scan_interval": "Update frequency (minutes)",
                     "server_name": "Select test server"
                 }
             }

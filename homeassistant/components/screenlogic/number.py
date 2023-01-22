@@ -6,6 +6,7 @@ from screenlogicpy.const import BODY_TYPE, DATA as SL_DATA, EQUIPMENT, SCG
 from homeassistant.components.number import NumberEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import ScreenlogicEntity
@@ -42,20 +43,23 @@ async def async_setup_entry(
 class ScreenLogicNumber(ScreenlogicEntity, NumberEntity):
     """Class to represent a ScreenLogic Number."""
 
+    _attr_has_entity_name = True
+
     def __init__(self, coordinator, data_key, enabled=True):
         """Initialize of the entity."""
         super().__init__(coordinator, data_key, enabled)
         self._body_type = SUPPORTED_SCG_NUMBERS.index(self._data_key)
-        self._attr_max_value = SCG.LIMIT_FOR_BODY[self._body_type]
-        self._attr_name = f"{self.gateway_name} {self.sensor['name']}"
-        self._attr_unit_of_measurement = self.sensor["unit"]
+        self._attr_native_max_value = SCG.LIMIT_FOR_BODY[self._body_type]
+        self._attr_name = self.sensor["name"]
+        self._attr_native_unit_of_measurement = self.sensor["unit"]
+        self._attr_entity_category = EntityCategory.CONFIG
 
     @property
-    def value(self) -> float:
+    def native_value(self) -> float:
         """Return the current value."""
         return self.sensor["value"]
 
-    async def async_set_value(self, value: float) -> None:
+    async def async_set_native_value(self, value: float) -> None:
         """Update the current value."""
         # Need to set both levels at the same time, so we gather
         # both existing level values and override the one that changed.

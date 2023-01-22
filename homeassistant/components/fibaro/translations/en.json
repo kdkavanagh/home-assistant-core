@@ -1,7 +1,8 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Device is already configured"
+            "already_configured": "Device is already configured",
+            "reauth_successful": "Re-authentication was successful"
         },
         "error": {
             "cannot_connect": "Failed to connect",
@@ -9,11 +10,18 @@
             "unknown": "Unexpected error"
         },
         "step": {
+            "reauth_confirm": {
+                "data": {
+                    "password": "Password"
+                },
+                "description": "Please update your password for {username}",
+                "title": "Reauthenticate Integration"
+            },
             "user": {
                 "data": {
-                    "url": "URL in the format http://HOST/api/",
                     "import_plugins": "Import entities from fibaro plugins?",
                     "password": "Password",
+                    "url": "URL in the format http://HOST/api/",
                     "username": "Username"
                 }
             }

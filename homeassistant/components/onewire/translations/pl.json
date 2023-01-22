@@ -4,22 +4,15 @@
             "already_configured": "Urz\u0105dzenie jest ju\u017c skonfigurowane"
         },
         "error": {
-            "cannot_connect": "Nie mo\u017cna nawi\u0105za\u0107 po\u0142\u0105czenia",
-            "invalid_path": "Nie znaleziono katalogu"
+            "cannot_connect": "Nie mo\u017cna nawi\u0105za\u0107 po\u0142\u0105czenia"
         },
         "step": {
-            "owserver": {
+            "user": {
                 "data": {
                     "host": "Nazwa hosta lub adres IP",
                     "port": "Port"
                 },
-                "title": "Ustawienia owserver"
-            },
-            "user": {
-                "data": {
-                    "type": "Rodzaj po\u0142\u0105czenia"
-                },
-                "title": "Konfiguracja 1-Wire"
+                "title": "Konfiguracja serwera"
             }
         }
     },
@@ -29,8 +22,12 @@
         },
         "step": {
             "ack_no_options": {
-                "description": "Nie ma opcji dla implementacji magistrali SysBus",
-                "title": "Opcje magistrali OneWire SysBus"
+                "data": {
+                    "few": "Pustych",
+                    "many": "Pustych",
+                    "one": "Pusty",
+                    "other": "Puste"
+                }
             },
             "configure_device": {
                 "data": {

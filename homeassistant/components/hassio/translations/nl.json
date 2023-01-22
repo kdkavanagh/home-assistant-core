@@ -1,6 +1,15 @@
 {
+    "issues": {
+        "unhealthy": {
+            "title": "Ongezond systeem - {reason}"
+        },
+        "unsupported": {
+            "title": "Niet-ondersteund systeem - {reason}"
+        }
+    },
     "system_health": {
         "info": {
+            "agent_version": "Agent-versie",
             "board": "Bord",
             "disk_total": "Totale schijfruimte",
             "disk_used": "Gebruikte schijfruimte",

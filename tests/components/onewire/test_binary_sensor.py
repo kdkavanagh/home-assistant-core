@@ -1,4 +1,5 @@
-"""Tests for 1-Wire devices connected on OWServer."""
+"""Tests for 1-Wire binary sensors."""
+from collections.abc import Generator
 import logging
 from unittest.mock import MagicMock, patch
 
@@ -21,19 +22,19 @@ from tests.common import mock_device_registry, mock_registry
 
 
 @pytest.fixture(autouse=True)
-def override_platforms():
+def override_platforms() -> Generator[None, None, None]:
     """Override PLATFORMS."""
     with patch("homeassistant.components.onewire.PLATFORMS", [Platform.BINARY_SENSOR]):
         yield
 
 
-async def test_owserver_binary_sensor(
+async def test_binary_sensors(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
     owproxy: MagicMock,
     device_id: str,
     caplog: pytest.LogCaptureFixture,
-):
+) -> None:
     """Test for 1-Wire binary sensor.
 
     This test forces all entities to be enabled.

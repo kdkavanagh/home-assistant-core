@@ -2,6 +2,7 @@
     "config": {
         "abort": {
             "cannot_connect": "Failed to connect",
+            "not_insteon_device": "Discovered device not an Insteon device",
             "single_instance_allowed": "Already configured. Only a single configuration possible."
         },
         "error": {
@@ -11,7 +12,7 @@
         "flow_title": "{name}",
         "step": {
             "confirm_usb": {
-                "description": "Do you want to setup {name}?"
+                "description": "Do you want to set up {name}?"
             },
             "hubv1": {
                 "data": {
@@ -42,8 +43,7 @@
                 "data": {
                     "modem_type": "Modem type."
                 },
-                "description": "Select the Insteon modem type.",
-                "title": "Insteon"
+                "description": "Select the Insteon modem type."
             }
         }
     },
@@ -60,8 +60,7 @@
                     "cat": "Device category (i.e. 0x10)",
                     "subcat": "Device subcategory (i.e. 0x0a)"
                 },
-                "description": "Add a device override.",
-                "title": "Insteon"
+                "description": "Add a device override."
             },
             "add_x10": {
                 "data": {
@@ -70,8 +69,7 @@
                     "steps": "Dimmer steps (for light devices only, default 22)",
                     "unitcode": "Unitcode (1 - 16)"
                 },
-                "description": "Change the Insteon Hub password.",
-                "title": "Insteon"
+                "description": "Change the Insteon Hub password."
             },
             "change_hub_config": {
                 "data": {
@@ -80,33 +78,35 @@
                     "port": "Port",
                     "username": "Username"
                 },
-                "description": "Change the Insteon Hub connection information. You must restart Home Assistant after making this change. This does not change the configuration of the Hub itself. To change the configuration in the Hub use the Hub app.",
-                "title": "Insteon"
+                "description": "Change the Insteon Hub connection information. You must restart Home Assistant after making this change. This does not change the configuration of the Hub itself. To change the configuration in the Hub use the Hub app."
+            },
+            "change_plm_config": {
+                "data": {
+                    "device": "USB Device Path"
+                },
+                "description": "Change the Insteon PLM connection information. You must restart Home Assistant after making this change. This does not change the configuration of the PLM itself."
             },
             "init": {
                 "data": {
                     "add_override": "Add a device override.",
                     "add_x10": "Add an X10 device.",
                     "change_hub_config": "Change the Hub configuration.",
+                    "change_plm_config": "Change the PLM configuration.",
                     "remove_override": "Remove a device override.",
                     "remove_x10": "Remove an X10 device."
-                },
-                "description": "Select an option to configure.",
-                "title": "Insteon"
+                }
             },
             "remove_override": {
                 "data": {
                     "address": "Select a device address to remove"
                 },
-                "description": "Remove a device override",
-                "title": "Insteon"
+                "description": "Remove a device override"
             },
             "remove_x10": {
                 "data": {
                     "address": "Select a device address to remove"
                 },
-                "description": "Remove an X10 device",
-                "title": "Insteon"
+                "description": "Remove an X10 device"
             }
         }
     }
